@@ -1,7 +1,11 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var deployables = require('./deployables.json');
 var exec = require('child_process').exec;
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.post('/', (req, res, next) => {
   if (req.headers['x-github-event']) {
@@ -13,6 +17,7 @@ app.post('/', (req, res, next) => {
         if (deployables[req.body.repository.name]) {
           const deployable = deployables[req.body.repository.name];
           if (req.body.ref === 'refs/heads/' + deployable.branch) {
+            console.log('Calling ' + deployable.path + ' - ' + deployable.script);
             exec(deployable.script, {
               cwd: deployable.path,
             }, (error, stdout, stderr) => {

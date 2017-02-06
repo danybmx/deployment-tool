@@ -1,7 +1,7 @@
 {
   "cromoly": {
     "branch": "deployment",
-    "path": "/home/daniel/projects/cromoly",
-    "script": "deploy.sh"
+    "path": "/home/daniel/projects/cromoly/",
+    "script": "bash deploy.sh"
   }
 }
