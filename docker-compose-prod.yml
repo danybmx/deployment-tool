@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  deployment:
+    image: node:latest
+    environment:
+      - VIRTUAL_HOST=deployment.dpstudios.es
+      - VIRTUAL_PROTO=http
+      - LETSENCRYPT_HOST=deployment.dpstudios.es
+      - LETSENCRYPT_EMAIL=daniel@dpstudios.es
+      - NODE_ENV=production
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: npm start
+    networks:
+      - nginx-proxy
+    expose:
+      - "3000"
+
+networks:
+  nginx-proxy:
+    external: true

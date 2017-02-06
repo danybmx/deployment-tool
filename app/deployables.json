@@ -1,0 +1,5 @@
+{
+  "cromoly": {
+    "deploy": "./bin/deploy-cromoly.sh"
+  }
+}
