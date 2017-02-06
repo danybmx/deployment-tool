@@ -37,3 +37,6 @@ certs/*
 # Env files
 .env
 !.env.sample
+
+# deployables
+deployables.json

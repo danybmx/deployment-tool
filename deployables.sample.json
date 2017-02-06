@@ -3,10 +3,5 @@
     "branch": "master",
     "path": "/home/daniel/projects/development-tool",
     "script": "bash deploy.sh"
-  },
-  "cromoly": {
-    "branch": "master",
-    "path": "/home/daniel/projects/cromoly/",
-    "script": "bash deploy.sh"
   }
 }
