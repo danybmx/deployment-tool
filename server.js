@@ -55,5 +55,5 @@ app.post('/', (req, res, next) => {
 });
 
 app.listen(8888, () => {
-  console.log('Server listening on port 3000');
+  console.log('Server listening on port 8888');
 });
