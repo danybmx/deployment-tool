@@ -17,7 +17,6 @@ app.post('/', (req, res, next) => {
         if (deployables[req.body.repository.name]) {
           const deployable = deployables[req.body.repository.name];
           if (req.body.ref === 'refs/heads/' + deployable.branch) {
-            console.log('Calling ' + deployable.path + ' - ' + deployable.script);
             exec(deployable.script, {
               cwd: deployable.path,
             }, (error, stdout, stderr) => {
@@ -55,6 +54,6 @@ app.post('/', (req, res, next) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(8888, () => {
   console.log('Server listening on port 3000');
 });
