@@ -1,7 +1,7 @@
 {
   "deployment-tool": {
     "branch": "master",
-    "path": "/home/daniel/projects/development-tool",
+    "path": "/home/daniel/projects/development-tool/",
     "script": "bash deploy.sh"
   }
 }

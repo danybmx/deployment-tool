@@ -17,22 +17,17 @@ app.post('/', (req, res, next) => {
         if (deployables[req.body.repository.name]) {
           const deployable = deployables[req.body.repository.name];
           if (req.body.ref === 'refs/heads/' + deployable.branch) {
+            // Reply github
+            res.json({
+              success: true,
+              deployable: deployable,
+            });
+
+            // Run script
             exec(deployable.script, {
               cwd: deployable.path,
-            }, (error, stdout, stderr) => {
-              if (error) {
-                console.error(error);
-                return res.status(500).json({
-                  success: false,
-                  error: error,
-                  output: stdout,
-                  stderr: stderr,
-                });
-              }
-              return res.json({
-                success: true,
-                output: stdout,
-              });
+            }, (err) => {
+              if (err) console.error(err);
             });
           } else {
             return res.status(200).send('Nothing to do here');
